@@ -123,7 +123,7 @@ const AllOrders = () => {
 
       <div className="listing_wrap mt-3">
         <div className="row justify-content-between flex-nowrap gx-0">
-          <div className="col-7">
+          <div className="col-7 col-md-2">
               <div className="time_radio_group ">
                 <div className="radio_single">
                   <input type="radio" name="time" id="radio1" defaultChecked/>
@@ -135,7 +135,7 @@ const AllOrders = () => {
                 </div>
               </div>
           </div>
-          <div className="col-4 ps-0">
+          <div className="col-4 ps-0 col-md-1">
           <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} placeholderText="Today" dateFormat="MMMM d"/>
           </div>
         </div>
@@ -147,42 +147,6 @@ const AllOrders = () => {
             return(
               <OrderList name={name} address={address} tel={tel} status={status} key={index} order_number={order_number} pickup_type={pickup_type} comments={comments} handleShow={handleShow} id={id} handleShow2={handleShow2}/>
            )})}
-
-          
-
-            {/* <div className="listing_group">
-              <div className="listing_row">
-                 <div className='details'>
-                   <h3 onClick={() => setSlide(!slide)}>Eric White</h3>
-                   <p>263 Ossington AVe</p>
-                 </div>
-                 <div className='actions'>
-                   <a href="tel: (416) 7890 235"><img src={Call} alt="" /></a>
-                   <span className="order_status assigned btn" onClick={handleShow}>Assigned</span>
-                 </div>
-              </div>
-             
-             { slide ? <div className="listing_slide">
-                  <div className="row gx-0">
-                    <div className="col-5 pos_relative">
-                       <button className='btn-primary direction_btn'><img src={Direction} alt="" /> Directions</button>
-                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.945248748257!2d114.1732937154152!3d22.28006374925834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13ff472207979395%3A0x14bb393f784a9b06!2sChina%20Resources%20Building!5e0!3m2!1sen!2sin!4v1652344330335!5m2!1sen!2sin"></iframe>
-
-                    </div>
-                    <div className="col-7 ps-4">
-                       <div className="order_no">LTGOA000001</div>
-                       <div className="pickup_type">Normal pickup</div>
-                       <div className="comments">Call 10 mins before pick up</div>
-                       <div className="d-flex mt-3">
-                       <div className="upload_weight file me-3"><label onClick={handleShow2}><img src={Img} alt="" srcset="" /> weight uploaded</label></div>
-                       <div className="upload_cost file"><label><img src={Cloud} alt="" srcset="" /> upload cost</label></div>
-                       </div>
-                    </div>
-                  </div>
-              </div>
-              : null
-              } 
-            </div> */}
 
               <p className='text-center end_sep mt-5'><span>That's all for today</span></p>
 

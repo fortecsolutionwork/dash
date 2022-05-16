@@ -9,9 +9,34 @@ html {
           box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'SFPro';
+  src: url(fonts/SF-Pro/SF-Pro-Display-Regular.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'SFPro';
+  src: url(fonts/SF-Pro/SF-Pro-Display-Bold.otf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'SFPro';
+  src: url(fonts/SF-Pro/SF-Pro-Display-Medium.otf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'SFPro';
+  src: url(fonts/SF-Pro/SF-Pro-Display-Black.otf);
+  font-weight: 900;
+}
+
 body {
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'SFPro';
+  font-weight: 400;
   color: #000;
   line-height: 1.5rem;
 }
@@ -622,7 +647,7 @@ a {
 }
 
 .table_status_bar .title {
-  font-size: .85vw;
+  font-size: 1vw;
   margin: 0;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -630,6 +655,7 @@ a {
   text-align: center;
   padding: 0 1.25rem;
   line-height: 3rem;
+  font-weight: 400;
 }
 
 .table_status_bar .stat {
@@ -883,12 +909,15 @@ a {
   padding-left: 3rem;
   line-height: 1.1;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .table .user_info img {
-  max-width: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   position: absolute;
   left: 0;
+  border-radius: 50%;
 }
 
 .status {
@@ -1329,10 +1358,28 @@ b, strong {
   right: 100%;
 }
 
+.mobile_header {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   html {
     font-size: 1.833vw;
   }
+}
+
+.react-datepicker__input-container input[type="text"] {
+  width: 100% !important;
+  height: 2.75rem !important;
+  background: #fafafa url("images/calendar.svg") !important;
+  border: 1px solid #3685e0;
+  text-align: center;
+  border-radius: 1rem;
+  background-repeat: no-repeat !important;
+  background-position: 14% 50% !important;
+  background-size: 1.25rem !important;
 }
 
 .time_radio_group {
@@ -1366,19 +1413,6 @@ b, strong {
   font-size: 1rem;
   color: #93919d;
   margin-bottom: 0.75rem;
-}
-
-.listing_wrap .react-datepicker__input-container input[type="text"] {
-  width: 100%;
-  height: 2.75rem;
-  background: #fafafa url("images/calendar.svg");
-  border: 1px solid #3685e0;
-  text-align: center;
-  border-radius: 1rem;
-  background-repeat: no-repeat;
-  background-position: 14% 50%;
-  text-indent: 1rem;
-  background-size: 1.25rem;
 }
 
 .listing_wrap .listing_group {
@@ -1479,6 +1513,40 @@ b, strong {
   background: #02bc77;
 }
 
+.add_filter .dropown {
+  background: #fff;
+  -webkit-box-shadow: 0 10px 10px #0002;
+          box-shadow: 0 10px 10px #0002;
+  padding: 1rem;
+  text-align: left;
+  border-radius: 1rem;
+  font-size: 1rem;
+  position: absolute;
+  z-index: 11;
+  width: 11rem;
+  opacity: 0;
+  margin-top: 1rem;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.add_filter .dropown.active {
+  opacity: 1;
+}
+
+.add_filter .dropown .status {
+  margin: 0 .75rem;
+}
+
+.add_filter .dropown input {
+  zoom: 1.4;
+}
+
+.add_filter .dropown label {
+  line-height: 0;
+  vertical-align: super;
+}
+
 @media only screen and (max-width: 767px) {
   html {
     font-size: 3.5vw;
@@ -1535,6 +1603,7 @@ b, strong {
   }
   .header .branding .menu_dropdown.active {
     left: 0;
+    top: calc(100% + 0px);
   }
   .header .search_bar {
     width: auto;
@@ -1570,101 +1639,149 @@ b, strong {
   }
 }
 
+.user_dropdown .dropdown-toggle::after {
+  display: none;
+}
+
 /* Employee Dashboard Css */
+.mobile_header .dropdown:after, .mobile_header .dropdown-toggle::after {
+  display: none;
+}
+
+.mobile_header .menu_extras {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 10%;
+          flex: 0 0 10%;
+  max-width: 10%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mobile_header .search_mobile .search_form {
+  display: none;
+  position: absolute;
+  width: 20%;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  padding: 1.5rem;
+  -webkit-box-shadow: 0 10px 10px #0001;
+          box-shadow: 0 10px 10px #0001;
+}
+
+.mobile_header .search_mobile .search_form.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mobile_header .search_mobile .search_form input {
+  height: 3rem;
+  font-size: 1.25rem;
+}
+
+.mobile_header .search_mobile .search_form i {
+  margin-left: 1rem;
+  color: #000;
+  font-size: 2rem;
+}
+
+.mobile_header .user_dropdown .btn.btn-primary {
+  padding: 0 !important;
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.mobile_header .user_dropdown .btn.btn-primary:focus, .mobile_header .user_dropdown .btn.btn-primary:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  border-color: transparent;
+}
+
+.mobile_header .user_dropdown .dropdown-item {
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.mobile_header .city_dropdown {
+  position: relative;
+}
+
+.mobile_header .city_dropdown .form-select {
+  padding: 0 1.25rem 0 0;
+  font-size: 1.5rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+}
+
+.mobile_header .city_dropdown .form-select option {
+  color: #000;
+}
+
+.mobile_header .city_dropdown .form-select:focus, .mobile_header .city_dropdown .form-select:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.mobile_header .city_dropdown:after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+  position: absolute;
+  left: auto;
+  top: 1rem;
+  right: 0;
+}
+
+.listing_table {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.time_radio_group {
+  max-width: 15.5rem;
+}
+
 @media only screen and (max-width: 767px) {
-  .mobile_header .dropdown:after, .mobile_header .dropdown-toggle::after {
-    display: none;
+  .react-datepicker__input-container input[type="text"] {
+    text-indent: 1rem;
+    font-size: 1.125rem;
+  }
+  .time_radio_group {
+    max-width: 100%;
+  }
+  .listing_table {
+    background: transparent;
+    padding: 0rem;
   }
   .mobile_header .menu_extras {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-flex: 0;
         -ms-flex: 0 0 42%;
             flex: 0 0 42%;
     max-width: 42%;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
   }
   .mobile_header .search_mobile .search_form {
-    display: none;
-    position: absolute;
     width: 100%;
-    left: 0;
-    top: 100%;
-    background: #fff;
-    padding: 1.5rem;
-    -webkit-box-shadow: 0 10px 10px #0001;
-            box-shadow: 0 10px 10px #0001;
-  }
-  .mobile_header .search_mobile .search_form.active {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .mobile_header .search_mobile .search_form input {
-    height: 3rem;
-    font-size: 1.25rem;
-  }
-  .mobile_header .search_mobile .search_form i {
-    margin-left: 1rem;
-    color: #000;
-    font-size: 2rem;
-  }
-  .mobile_header .user_dropdown .btn.btn-primary {
-    padding: 0 !important;
-    background: transparent;
-    -webkit-box-shadow: none;
-            box-shadow: none;
-  }
-  .mobile_header .user_dropdown .btn.btn-primary:focus, .mobile_header .user_dropdown .btn.btn-primary:active {
-    -webkit-box-shadow: none;
-            box-shadow: none;
-    outline: none;
-    border-color: transparent;
-  }
-  .mobile_header .user_dropdown .dropdown-item {
-    font-size: 1.25rem;
-    padding: 0.5rem 1rem;
-  }
-  .mobile_header .city_dropdown {
-    position: relative;
-  }
-  .mobile_header .city_dropdown .form-select {
-    padding: 0 1.25rem 0 0;
-    font-size: 1.5rem;
-    color: #fff;
-    background: transparent;
-    border: none;
-  }
-  .mobile_header .city_dropdown .form-select option {
-    color: #000;
-  }
-  .mobile_header .city_dropdown .form-select:focus, .mobile_header .city_dropdown .form-select:active {
-    -webkit-box-shadow: none;
-            box-shadow: none;
-    outline: none;
-  }
-  .mobile_header .city_dropdown:after {
-    display: inline-block;
-    margin-left: 0.255em;
-    vertical-align: 0.255em;
-    content: "";
-    border-top: 0.3em solid;
-    border-right: 0.3em solid transparent;
-    border-bottom: 0;
-    border-left: 0.3em solid transparent;
-    position: absolute;
-    left: auto;
-    top: 1rem;
-    right: 0;
   }
   .modal .modal-dialog {
     max-width: 85%;

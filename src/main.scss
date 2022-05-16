@@ -6,9 +6,36 @@ html{
 *{
     box-sizing: border-box;
 }
+
+@font-face {
+    font-family: 'SFPro';
+    src: url(fonts/SF-Pro/SF-Pro-Display-Regular.otf);
+    font-weight: 400;
+  }
+  
+  @font-face {
+    font-family: 'SFPro';
+    src: url(fonts/SF-Pro/SF-Pro-Display-Bold.otf);
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'SFPro';
+    src: url(fonts/SF-Pro/SF-Pro-Display-Medium.otf);
+    font-weight: 500;
+  }
+  
+  @font-face {
+    font-family: 'SFPro';
+    src: url(fonts/SF-Pro/SF-Pro-Display-Black.otf);
+    font-weight: 900;
+  }
+
+  
+
 body{
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
+  font-family: 'SFPro';
+  font-weight: 400;
     color: #000;
     line-height: 1.5rem;
    
@@ -529,12 +556,13 @@ a{
     overflow: hidden;
 
     .title {
-        font-size: .85vw;
+        font-size: 1vw;
         margin: 0;
         flex-grow: 1;
         text-align: center;
         padding: 0 1.25rem;
         line-height: 3rem;
+        font-weight: 400;
     }
     .stat {
         color: #fff;
@@ -590,6 +618,8 @@ a{
 }
 
 }
+
+
 
 .actions {
     margin-bottom: .5rem;
@@ -785,10 +815,13 @@ a{
     padding-left: 3rem;
     line-height: 1.1;
     white-space: nowrap;
+    cursor: pointer;
          img {
-        max-width: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
         position: absolute;
         left:0;
+        border-radius: 50%;
          }
     }
 }
@@ -1188,12 +1221,30 @@ b, strong{
 }
 }
 
+.mobile_header{
+    justify-content: space-between;
+}
+
 @media only screen and (min-width:768px) and (max-width:1024px){
     html {
         font-size: 1.833vw;
     }
 }
 
+.react-datepicker__input-container{
+        
+    input[type="text"] {
+        width: 100% !important;
+        height: 2.75rem !important;
+        background: #fafafa url('images/calendar.svg') !important;
+        border: 1px solid #3685e0;
+        text-align: center;
+        border-radius: 1rem;
+        background-repeat: no-repeat !important;
+        background-position: 14% 50% !important;
+        background-size: 1.25rem !important;
+}
+    }
 
 .time_radio_group{
     display: flex;
@@ -1228,21 +1279,6 @@ label {
 
 .listing_wrap{
     
-    .react-datepicker__input-container{
-        
-    input[type="text"] {
-        width: 100%;
-        height: 2.75rem;
-        background: #fafafa url('images/calendar.svg');
-        border: 1px solid #3685e0;
-        text-align: center;
-        border-radius: 1rem;
-        background-repeat: no-repeat;
-        background-position: 14% 50%;
-        text-indent: 1rem;
-        background-size: 1.25rem;
-}
-    }
     .listing_group{
         margin-bottom: 1rem;
     .listing_row {
@@ -1337,6 +1373,40 @@ label {
 }
 }
 
+.add_filter{
+.dropown {
+    background: #fff;
+    box-shadow: 0 10px 10px #0002;
+    padding: 1rem;
+    text-align: left;
+    border-radius: 1rem;
+    font-size: 1rem;
+    position: absolute;
+    z-index: 11;
+    width: 11rem;
+    opacity: 0;
+    margin-top: 1rem;
+    transition: 0.3s ease-in-out;
+
+    &.active{
+        opacity: 1;
+    }
+  
+    .status {
+        margin: 0 .75rem;
+    }
+
+ input {
+     zoom: 1.4;
+    }
+
+label {
+    line-height: 0;
+    vertical-align: super;
+}
+}
+}
+
 @media only screen and (max-width:767px){
 html {
     font-size: 3.5vw;
@@ -1371,6 +1441,7 @@ html {
     padding: 0.65rem 1.25rem;
     border-radius: 1rem;
 
+
     .dropdown:after {
         display: inline-block;
         margin-left: 0.255em;
@@ -1399,6 +1470,7 @@ html {
     }
     .menu_dropdown.active {
         left: 0;
+        top: calc(100% + 0px);
     }
 }
 .search_bar {
@@ -1436,6 +1508,7 @@ html {
         display: none;
     }
 }
+
 }
 .langauge_dropdown, .search_box input{
     display: none;
@@ -1444,103 +1517,142 @@ html {
 
 }
 
+.user_dropdown .dropdown-toggle::after{
+    display: none;
+}
 
 
 /* Employee Dashboard Css */
-@media only screen and (max-width:767px){
-    .mobile_header{
 
-        .dropdown:after, .dropdown-toggle::after{
-            display: none;
-        }
-    .menu_extras {
-        display: flex;
-        flex: 0 0 42%;
-         max-width: 42%;
-         justify-content: space-between;
-         align-items: center;
-    }
-    .search_mobile{
-    .search_form{
+.mobile_header{
+
+    .dropdown:after, .dropdown-toggle::after{
         display: none;
-        position: absolute;
-    width: 100%;
-    left: 0;
+    }
+.menu_extras {
+    display: flex;
+    flex: 0 0 10%;
+     max-width: 10%;
+     justify-content: space-between;
+     align-items: center;
+}
+.search_mobile{
+.search_form{
+    display: none;
+    position: absolute;
+    width: 20%;
+    right: 0;
     top: 100%;
     background: #fff;
     padding: 1.5rem;
     box-shadow: 0 10px 10px #0001;
 
-        &.active{
-            display: flex;
-            align-items: center;
-        }
-
-        input{
-            height: 3rem;
-            font-size: 1.25rem;
-        }
-
-        i{
-           margin-left: 1rem;
-           color: #000;
-           font-size: 2rem;
-        }
+    &.active{
+        display: flex;
+        align-items: center;
     }
+
+    input{
+        height: 3rem;
+        font-size: 1.25rem;
+    }
+
+    i{
+       margin-left: 1rem;
+       color: #000;
+       font-size: 2rem;
+    }
+}
 }
 
 .user_dropdown {
-    .btn.btn-primary {
-    padding: 0 !important;
-    background: transparent;
-    box-shadow: none;
+.btn.btn-primary {
+padding: 0 !important;
+background: transparent;
+box-shadow: none;
 
-    &:focus, &:active{
-        box-shadow: none;
-        outline: none;
-        border-color: transparent;
-    }
+&:focus, &:active{
+    box-shadow: none;
+    outline: none;
+    border-color: transparent;
+}
 }
 .dropdown-item {
-    font-size: 1.25rem;
-    padding: 0.5rem 1rem;
+font-size: 1.25rem;
+padding: 0.5rem 1rem;
 }
 }
 .city_dropdown{
-    position: relative;
+position: relative;
 .form-select {
-    padding: 0 1.25rem 0 0;
-    font-size: 1.5rem;
-    color: #fff;
-    background: transparent;
-    border: none;
-    
-    option{
-        color: #000;
-    }
+padding: 0 1.25rem 0 0;
+font-size: 1.5rem;
+color: #fff;
+background: transparent;
+border: none;
 
-    &:focus, &:active{
-        box-shadow: none;
-        outline: none;
-    }
+option{
+    color: #000;
+}
+
+&:focus, &:active{
+    box-shadow: none;
+    outline: none;
+}
 }
 
 
 &:after{
-    display: inline-block;
-    margin-left: 0.255em;
-    vertical-align: 0.255em;
-    content: "";
-    border-top: 0.3em solid;
-    border-right: 0.3em solid transparent;
-    border-bottom: 0;
-    border-left: 0.3em solid transparent;
-    position: absolute;
-    left: auto;
-    top: 1rem;
-    right: 0;
+display: inline-block;
+margin-left: 0.255em;
+vertical-align: 0.255em;
+content: "";
+border-top: 0.3em solid;
+border-right: 0.3em solid transparent;
+border-bottom: 0;
+border-left: 0.3em solid transparent;
+position: absolute;
+left: auto;
+top: 1rem;
+right: 0;
 }
 }
+}
+
+
+.listing_table {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+.time_radio_group {
+    max-width: 15.5rem;
+}
+
+
+@media only screen and (max-width:767px){
+    .react-datepicker__input-container input[type="text"]{
+        text-indent: 1rem;
+        font-size: 1.125rem;
+    }
+    .time_radio_group {
+        max-width: 100%;
+    }
+    .listing_table {
+        background: transparent;
+        padding: 0rem;
+    }
+    .mobile_header{
+    .menu_extras {
+        flex: 0 0 42%;
+         max-width: 42%;
+    }
+    .search_mobile{
+        .search_form{
+        width: 100%;
+        
+        }
+        }
 }
 
 .modal{

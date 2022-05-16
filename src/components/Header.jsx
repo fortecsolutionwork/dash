@@ -87,7 +87,16 @@ const Header = () => {
               </DropdownButton>
              </div>
              <div className="user_dropdown">
-                 <img src={Avatar} alt="" />
+             <Dropdown>
+             <Dropdown.Toggle>
+             <img src={Avatar} alt="" />
+            </Dropdown.Toggle>
+
+             <Dropdown.Menu >
+            <Dropdown.Item>Settings</Dropdown.Item>
+            <Dropdown.Item>Logout</Dropdown.Item>
+            </Dropdown.Menu>
+            </Dropdown>
              </div>
           </div>
       </div>

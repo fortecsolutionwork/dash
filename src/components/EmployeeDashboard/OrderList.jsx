@@ -22,7 +22,7 @@ const OrderList = ({name, address, tel, status, order_number, pickup_type, comme
 
               {slide &&  <div className="listing_slide">
                   <div className="row gx-0">
-                    <div className="col-5 pos_relative">
+                    <div className="col-5 col-md-2 pos_relative">
                        <button className='btn-primary direction_btn'><img src={Direction} alt="" /> Directions</button>
                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.945248748257!2d114.1732937154152!3d22.28006374925834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13ff472207979395%3A0x14bb393f784a9b06!2sChina%20Resources%20Building!5e0!3m2!1sen!2sin!4v1652344330335!5m2!1sen!2sin"></iframe>
 
